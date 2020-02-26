@@ -18,7 +18,7 @@ dynamic decodeString(String data) {
 }
 
 Map<String, dynamic> _dictionary(Uint8List data, _Index index) {
-  Map<String, dynamic> result = new Map();
+  Map<String, dynamic> result = Map();
 
   index.value++;
 
@@ -71,16 +71,17 @@ int _parseInt(Uint8List data, int start, int end) {
   for (var i = start; i < end; i++) {
     var number = data[i];
 
-    if (number < 58 && number >= 48)
+    if (number < 58 && number >= 48) {
       sum = sum * 10 + (number - 48);
-    else if (i == start && number == 43)
+    } else if (i == start && number == 43) {
       continue;
-    else if (i == start && number == 45)
+    } else if (i == start && number == 45) {
       sign = -1;
-    else if (number == 46)
+    } else if (number == 46) {
       break;
-    else
+    } else {
       throw TypeError();
+    }
   }
 
   return sum * sign;
