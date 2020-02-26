@@ -1,6 +1,6 @@
 name: bencoding
 description: A dart library for encoding and decoding bencoded data, according to the BitTorrent specification.
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/jonasroussel/bencoding
 homepage: https://github.com/jonasroussel/bencoding#readme
 
