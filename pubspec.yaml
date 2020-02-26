@@ -1,0 +1,8 @@
+name: bencoding
+description: Bencode de/encoder
+version: 0.1.0
+repository: https://github.com/jonasroussel/bencoding
+homepage: https://github.com/jonasroussel/bencoding#readme
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
