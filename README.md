@@ -65,7 +65,7 @@ String: d6:string11:Hello World7:integeri12345e4:dictd3:key36:This is ...
 final bencodedData = 'd6:string11:Hello World7:integeri12345e4:dictd3:key36:This is a string within a dictionarye4:listli1ei2ei3ei4e6:stringi5edeee';
 
 print(bencode.decodeString(bencodedData));
-// or you use bencode.deocode(data) if your input data is a buffer (Uint8List)
+// or you can use bencode.deocode(data) if your input data is a buffer (Uint8List)
 ```
 
 #### Output

@@ -23,7 +23,7 @@ Map<String, dynamic> _dictionary(Uint8List data, _Index index) {
   index.value++;
 
   while (data[index.value] != 101) {
-    result[_string(data, index)] = _getNextData(data, index);
+    result[utf8.decode(_bytes(data, index))] = _getNextData(data, index);
   }
 
   index.value++;
@@ -54,14 +54,14 @@ int _integer(Uint8List data, _Index index) {
   return result;
 }
 
-String _string(Uint8List data, _Index index) {
+Uint8List _bytes(Uint8List data, _Index index) {
   final sep = data.indexOf(58, index.value);
   final length = _parseInt(data, index.value, sep);
-  final string = utf8.decode(data.sublist(sep + 1, sep + 1 + length), allowMalformed: true);
+  final bytes = data.sublist(sep + 1, sep + 1 + length);
 
   index.value = sep + 1 + length;
 
-  return string;
+  return bytes;
 }
 
 int _parseInt(Uint8List data, int start, int end) {
@@ -95,7 +95,13 @@ dynamic _getNextData(Uint8List data, _Index index) {
   } else if (data[index.value] == 105) {
     return _integer(data, index);
   } else {
-    return _string(data, index);
+    final bytes = _bytes(data, index);
+
+    try {
+      return utf8.decode(bytes);
+    } on FormatException {
+      return bytes;
+    }
   }
 }
 
